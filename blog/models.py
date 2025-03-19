@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from uuid import uuid4
+from django.urls import reverse
 
 # Create your models here.
 
@@ -46,3 +47,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title} by {self.author.username}'
+
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", args=[self.slug])

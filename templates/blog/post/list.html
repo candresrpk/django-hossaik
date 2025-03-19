@@ -1,0 +1,27 @@
+{% extends '../../base.html' %}
+
+
+{% block title %}Posts{% endblock  %}
+
+
+{% block content %}
+
+    <div class="container ">
+        <h2>POSTS</h2>
+
+        {% for post in posts %}
+        
+            <a class="card my-5 p-2" href="{{post.get_absolute_url}}">
+                <div class="card-body">
+                    <h4 class="card-title">{{post.title}}</h4>
+                    <p class="card-text">{{post.body | truncatewords:30|linebreaks}}</p>
+                    
+                </div>
+            </a>
+            
+        
+        {% endfor %}
+    </div>
+
+
+{% endblock  %}
