@@ -13,7 +13,7 @@
         
             <a class="card my-5 p-2" href="{{post.get_absolute_url}}">
                 <div class="card-body">
-                    <h4 class="card-title">{{post.title}}</h4>
+                    <h4 class="card-title text-info">{{post.title}}</h4>
                     <p class="card-text">{{post.body | truncatewords:30|linebreaks}}</p>
                     
                 </div>
@@ -22,6 +22,9 @@
         
         {% endfor %}
     </div>
+
+
+    {% include "../../includes/pagination.html" with page=posts%}
 
 
 {% endblock  %}

@@ -110,8 +110,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_URL = BASE_DIR.joinpath('static')
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath('static')
+]
+STATIC_ROOT = BASE_DIR.joinpath('static_root')
+MEDIA_ROOT = BASE_DIR.joinpath('media_root')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# EMAIL SETTINGS
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'H2bMw@example.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
