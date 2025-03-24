@@ -1,0 +1,27 @@
+{% extends '../../base.html' %}
+
+
+{% block title %}Create Post{% endblock  %}
+
+
+{% block content %}
+
+    <div class="container ">
+        <h2>Create Post</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+
+            <button class="btn btn-success text-white">Create Post</button>
+
+        </form>
+
+
+    </div>
+
+
+{% endblock  %}

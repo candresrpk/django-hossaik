@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
+from .forms import PostForm
 # Create your views here.
 
 
@@ -34,3 +35,20 @@ def post_detail(request, slug):
     return render(request,
                   'blog/post/detail.html',
                   context)
+
+
+def create_post(request):
+    context = {}
+    form = PostForm()
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blog:post_list')
+        else:
+            context['form'] = form
+            return render(request, 'blog/post/create.html', context)
+    context['form'] = form
+    return render(request, 'blog/post/create.html', context)
