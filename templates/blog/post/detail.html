@@ -1,0 +1,52 @@
+{% extends '../../base.html' %}
+
+
+{% block title %}{{post.title}}{% endblock  %}
+
+
+{% block content %}
+
+    <div class="container ">
+
+        <h2>{{post.title}}</h2>
+
+
+        <p class="date">
+            Published: {{post.published_date}} by {{post.author}}
+        </p>
+
+        <p>
+            {{post.body|linebreaks}}
+        </p>
+
+        {% with comments.count as total_comments %}
+
+            <h2>
+                {{total_comments}} comment{{total_comments|pluralize}}
+            </h2>
+
+        {% endwith %}
+
+
+        {% for comment in comments  %}
+            
+
+            <div class="card">
+                <p class="info">
+                    Comment {{forloop.counter}} by {{comment.author}}
+                </p>
+                {{comment.body|linebreaks}}
+            </div>
+
+        {% empty %}
+            <p>There are no comments</p>
+        {% endfor %}
+
+
+        {% include "../includes/comment_form.html" %}
+    </div>
+
+
+
+
+{% endblock  %}
