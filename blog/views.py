@@ -3,12 +3,14 @@ from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .forms import PostForm, CommentForm
+from taggit.models import Tag
+
 
 from django.views.decorators.http import require_POST
 # Create your views here.
 
 
-def post_list(request):
+def post_list(request, tag_slug=None):
     all_posts = Post.published.all()
 
     paginator = Paginator(all_posts, 3)

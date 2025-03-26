@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'hosaik.apps.HosaikConfig',
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
+    'taggit',
 
 ]
 

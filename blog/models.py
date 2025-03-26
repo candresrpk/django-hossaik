@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from uuid import uuid4
 from django.urls import reverse
-
+from taggit.managers import TaggableManager
 # Create your models here.
 
 
@@ -30,7 +30,7 @@ class Post(models.Model):
                               choices=Status.choices,
                               default=Status.DRAFT
                               )
-
+    tags = TaggableManager()
     objects = models.Manager()
     published = publishedManager()
 
